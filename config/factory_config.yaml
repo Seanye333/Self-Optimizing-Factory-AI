@@ -1,0 +1,65 @@
+factory:
+  name: "Plant Alpha — Line 1"
+  # 1 real-second = time_scale simulation-seconds (60 = 60x speed)
+  time_scale: 60.0
+  # Publish a state snapshot to the dashboard every N sim-seconds
+  publish_interval: 5.0
+
+  arrival:
+    mean_interarrival: 30   # seconds between raw parts (Poisson process)
+
+  stations:
+    - id: S001
+      name: "CNC Machining"
+      num_machines: 2
+      cycle_time_mean: 45.0   # seconds
+      cycle_time_std: 4.0
+      fault_probability: 0.003  # per cycle
+      mttr_mean: 300.0          # mean-time-to-repair (seconds)
+      mttr_std: 60.0
+      quality_yield: 0.985      # fraction of parts that pass
+      buffer_capacity: 15
+
+    - id: S002
+      name: "Deburring"
+      num_machines: 1
+      cycle_time_mean: 22.0
+      cycle_time_std: 2.5
+      fault_probability: 0.002
+      mttr_mean: 180.0
+      mttr_std: 30.0
+      quality_yield: 0.995
+      buffer_capacity: 10
+
+    - id: S003
+      name: "Assembly"
+      num_machines: 2
+      cycle_time_mean: 110.0
+      cycle_time_std: 12.0
+      fault_probability: 0.004
+      mttr_mean: 480.0
+      mttr_std: 120.0
+      quality_yield: 0.972
+      buffer_capacity: 20
+
+    - id: S004
+      name: "Quality Control"
+      num_machines: 1
+      cycle_time_mean: 35.0
+      cycle_time_std: 5.0
+      fault_probability: 0.001
+      mttr_mean: 120.0
+      mttr_std: 30.0
+      quality_yield: 1.0
+      buffer_capacity: 10
+
+    - id: S005
+      name: "Packaging"
+      num_machines: 1
+      cycle_time_mean: 15.0
+      cycle_time_std: 2.0
+      fault_probability: 0.001
+      mttr_mean: 90.0
+      mttr_std: 20.0
+      quality_yield: 0.999
+      buffer_capacity: 25
